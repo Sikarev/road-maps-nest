@@ -2,17 +2,19 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
+import { Road } from './models/Road';
+import { Device } from './models/Devices';
 
 @Injectable()
 export class AppService {
   constructor(private readonly httpService: HttpService) {}
-  getDevices(): Observable<AxiosResponse> {
+  getDevices(): Observable<AxiosResponse<Device[]>> {
     return this.httpService.get(
       'https://its62.ru/static-cache/inform_devices.json',
     );
   }
 
-  getRoads(): Observable<AxiosResponse> {
+  getRoads(): Observable<AxiosResponse<Road[]>> {
     return this.httpService.get('https://its62.ru/static-cache/roads.json');
   }
 }
