@@ -9,12 +9,10 @@ import { Device } from './models/Devices';
 export class AppService {
   constructor(private readonly httpService: HttpService) {}
   getDevices(): Observable<AxiosResponse<Device[]>> {
-    return this.httpService.get(
-      'https://its62.ru/static-cache/inform_devices.json',
-    );
+    return this.httpService.get('inform_devices.json');
   }
 
   getRoads(): Observable<AxiosResponse<Road[]>> {
-    return this.httpService.get('https://its62.ru/static-cache/roads.json');
+    return this.httpService.get('roads.json');
   }
 }
